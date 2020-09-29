@@ -1,0 +1,48 @@
+/**
+* Writen in Java
+ */
+import java.util.Scanner;
+public class MainTest
+{
+    public static void Main(String[] args)
+    {
+    int userInput;
+    int factor = 4;
+    int multiplier;
+    double factorReal = new Double(factor);
+    Scanner input = new Scanner(System.in);
+    System.out.printf("This program simplifies square roots. Please enter the term of the square root you wish to factor%n");
+    System.out.printf("NOTE: only integers will be accepted%n");
+    userInput = input.nextInt();
+    System.out.printf("Input accepted%nChecking for larget perfect square factor%n");
+    factor = findPerfSquare(userInput);
+    System.out.printf("Largest perfect square factor found: %d%n", factor);
+    multiplier = userInput/factor;
+    factorReal = Math.sqrt(factorReal);
+    System.out.printf("Square root of largest perfect square factor: %f%n", factorReal);
+    System.out.printf("Answer is %dsqrt(%f)", multiplier, factorReal);
+    input.close();
+}
+public static int findPerfSquare(int number)
+{
+    int LargestFactor = 0;
+
+    for(int i = 1; i <= number; i++)
+      {
+       Double toRealNumber = new Double(i);
+       Double realRoot = Math.sqrt(toRealNumber);
+       if (number%i != 0)
+        { 
+            continue;
+        }
+        else
+        {
+          if (realRoot - Math.floor(realRoot) == 0)
+          {
+              LargestFactor = i;
+            }
+        }
+    }
+    return LargestFactor;
+}
+}
